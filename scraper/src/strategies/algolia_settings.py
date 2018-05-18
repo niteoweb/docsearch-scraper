@@ -6,7 +6,7 @@ class AlgoliaSettings:
 
     @staticmethod
     def get(config, levels):
-        attributes_to_index = []
+        attributes_to_index = ['repo', ]
 
         # We first look for matches in the exact titles
         for level in levels:
@@ -34,7 +34,8 @@ class AlgoliaSettings:
                 'hierarchy',
                 'content',
                 'anchor',
-                'url'
+                'url',
+                'repo'
             ],
             'attributesToHighlight': [
                 'hierarchy',
@@ -49,7 +50,7 @@ class AlgoliaSettings:
                 'hierarchy_radio',
                 'content'
             ],
-            'attributesForFaceting': ['tags', 'no_variables', 'extra_attributes'] + config.get_extra_facets(),
+            'attributesForFaceting': ['repo', 'tags', 'no_variables', 'extra_attributes'] + config.get_extra_facets(),
             'distinct': True,
             'attributeForDistinct': 'url',
             'customRanking': [

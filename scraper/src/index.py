@@ -37,7 +37,8 @@ def run_config(config):
         config.api_key,
         config.index_name,
         AlgoliaSettings.get(config, strategy.levels),
-        config.query_rules
+        config.query_rules,
+        repo=config.repo
     )
 
     DOWNLOADER_MIDDLEWARES_PATH = 'scraper.src.custom_downloader_middleware.CustomDownloaderMiddleware'
@@ -80,7 +81,7 @@ def run_config(config):
     print("")
 
     if DocumentationSpider.NB_INDEXED > 0:
-        # algolia_helper.commit_tmp_index()
+        algolia_helper.commit_tmp_index()
         print('Nb hits: ' + str(DocumentationSpider.NB_INDEXED))
         config.update_nb_hits(DocumentationSpider.NB_INDEXED)
     else:

@@ -156,6 +156,8 @@ class DefaultStrategy(AbstractStrategy):
                 record['url_without_variables'] = self._get_url_with_anchor(record['url_without_variables'], record['anchor'])
                 record['no_variables'] = record['url'] == record['url_without_variables']
 
+            record['repo'] = self.config.repo
+
             records.append(record)
 
         return records
